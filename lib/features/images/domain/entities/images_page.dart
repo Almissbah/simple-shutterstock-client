@@ -1,7 +1,8 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 
 @immutable
-class ImagesPage {
+class ImagesPage extends Equatable {
   /// The current page number.
   final int pageNumber;
 
@@ -23,10 +24,14 @@ class ImagesPage {
       @required this.totalCount,
       @required this.searchId,
       @required this.imagesData});
+
+  @override
+  List<Object> get props =>
+      [pageNumber, imagesPerPage, totalCount, searchId, imagesData];
 }
 
 @immutable
-class ImageData {
+class ImageData extends Equatable {
   /// Image id.
   final String id;
 
@@ -56,10 +61,14 @@ class ImageData {
       @required this.mediaType,
       @required this.assetsData,
       @required this.contributor});
+
+  @override
+  List<Object> get props =>
+      [id, aspect, description, imageType, mediaType, assetsData, contributor];
 }
 
 @immutable
-class ImageAssetsData {
+class ImageAssetsData extends Equatable {
   /// Scaled until the larger dimension is 450px, watermarked.
   final ImageAsset preview;
 
@@ -85,10 +94,14 @@ class ImageAssetsData {
       @required this.hugeThumb,
       @required this.preview1000,
       @required this.preview1500});
+
+  @override
+  List<Object> get props =>
+      [preview, smallThumb, largeThumb, hugeThumb, preview1000, preview1500];
 }
 
 @immutable
-class ImageAsset {
+class ImageAsset extends Equatable {
   /// Image height in px.
   final int height;
 
@@ -99,12 +112,17 @@ class ImageAsset {
   final String url;
 
   ImageAsset({this.height, this.width, @required this.url});
+
+  @override
+  List<Object> get props => [height, width, url];
 }
 
 @immutable
-class Contributor {
+class Contributor extends Equatable {
   /// Contributor identifier.
   final String id;
 
   Contributor(this.id);
+  @override
+  List<Object> get props => [id];
 }
