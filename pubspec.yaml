@@ -1,8 +1,7 @@
 name: shutterstock_client
 description: A new Flutter project.
 
-publish_to: 'none' 
-
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -14,19 +13,19 @@ dependencies:
     sdk: flutter
 
   # HTTP Calls
-  dio:  ^3.0.1
+  dio: ^3.0.1
   #Rest API client
-  retrofit:  1.3.4+1
+  retrofit: 1.3.4+1
   # State managment
-  flutter_bloc:  
+  flutter_bloc:
   # HTTP calls logger
   pretty_dio_logger: ^1.1.1
   # Json
   json_serializable: ^3.5.0
   # DI
   get_it:
-  # DI Wrapper 
-  injectable:  1.0.7    
+  # DI Wrapper
+  injectable: 1.0.7
   cupertino_icons: ^1.0.2
   # Checking the internet connection
   data_connection_checker: ^0.3.4
@@ -34,22 +33,24 @@ dependencies:
   dartz: ^0.8.6
   # Value Equality
   equatable: ^2.0.0
+  # Pagination view
+  infinite_scroll_pagination: ^3.1.0
+  # For loading network images
+  cached_network_image:  
+
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   build_runner: any
-  meta: 
-  retrofit_generator: 
-  flutter_gen_runner:  
+  meta:
+  retrofit_generator:
+  flutter_gen_runner:
   injectable_generator:
   test:
   flutter_driver:
     sdk: flutter
-  bloc_test: ^4.0.0 
-
-
+  bloc_test: ^4.0.0
 
 flutter:
   uses-material-design: true
- 
