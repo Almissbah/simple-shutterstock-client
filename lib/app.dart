@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:shutterstock_client/features/splash/ui/splash_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart'; 
 
 import 'features/images/presentation/bloc/images_bloc.dart';
 import 'features/images/presentation/ui/images_screen.dart';
+import 'features/splash/presentation/ui/splash_screen.dart';
 import 'injection.dart';
 
 class MyApp extends StatelessWidget {
