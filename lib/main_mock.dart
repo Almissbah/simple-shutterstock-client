@@ -4,6 +4,6 @@ import 'injection.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  configureDependencies(Env.prod);
+  configureDependencies(Env.test);
   runApp(MyApp());
 }

@@ -7,8 +7,10 @@ import 'package:shutterstock_client/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:shutterstock_client/features/images/domain/repos/images_repository.dart';
 
+import '../../../../injection.dart';
 
-@Singleton(as: ImagesRepository)
+
+@Singleton(as: ImagesRepository,env: [Env.prod])
 class ImagesRepositoryImpl extends ImagesRepository {
   final ImagesRemoteDataSource imagesRemoteDataSource;
   final NetworkInfo networkInfo;

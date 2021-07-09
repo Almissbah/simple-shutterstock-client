@@ -15,9 +15,14 @@ import 'features/images/presentation/bloc/images_bloc.dart';
 import 'features/images/data/datasources/images_remote_data_source.dart';
 import 'features/images/domain/repos/images_repository.dart';
 import 'features/images/data/repos/images_repository_impl.dart';
+import 'features/images/data/repos/images_repository_mock.dart';
 import 'features/images/domain/usecases/load_images_page.dart';
 import 'core/network/network_info.dart';
 import 'di/platform_module.dart';
+
+/// Environment names
+const _test = 'test';
+const _prod = 'prod';
 
 /// adds generated dependencies
 /// to the provided [GetIt] instance
@@ -42,11 +47,14 @@ GetIt $initGetIt(
   // Eager singletons must be registered in the right order
   gh.singleton<ImagesRemoteDataSource>(
       ImagesRemoteDataSourceImpl(imagesApiService: get<ImagesApiService>()));
+  gh.singleton<ImagesRepository>(ImagesRepositoryMock(), registerFor: {_test});
   gh.singleton<NetworkInfo>(
       NetworkInfoImpl(dataConnectionChecker: get<DataConnectionChecker>()));
-  gh.singleton<ImagesRepository>(ImagesRepositoryImpl(
-      imagesRemoteDataSource: get<ImagesRemoteDataSource>(),
-      networkInfo: get<NetworkInfo>()));
+  gh.singleton<ImagesRepository>(
+      ImagesRepositoryImpl(
+          imagesRemoteDataSource: get<ImagesRemoteDataSource>(),
+          networkInfo: get<NetworkInfo>()),
+      registerFor: {_prod});
   return get;
 }
 
