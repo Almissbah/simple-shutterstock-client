@@ -1,5 +1,5 @@
 # Shutterstock Client
-This a simple Application that uses shutterstock APIs to display a list of images with infinite scroll.
+This a simple mobile application written with Flutter that uses shutterstock APIs to display a list of images with infinite scroll.
  
 
 ## App Features 
@@ -9,40 +9,45 @@ This a simple Application that uses shutterstock APIs to display a list of image
 2.   Error handling and retry functionality.
 
 ## App architecture
-the app is based on clean architecture, BloC and dependancy injection to provide good separation between app layers and support testing each module individually.
+The app is based on clean architecture, BloC and dependancy injection to provide good separation between the application layers and support testing each module individually.
 
 ### The app includes the following main components:
 
 * A web API service for fetching the images from the server.
-* Repositories to load the features data using the datasources. 
+* Datasources to load and parse the data from the APIs . 
+* Repositories to provide the data to the use-cases. 
 * A pagination widget for infinite scrolling.
-* A DI module to handle Prod and Test modes.
+* A DI framework to handle dependancies in Prod and Test modes.
 * Unit Test cases, Widget test cases and Integration tests.
 
 ### App Packages:
-* **core** - contains the common classes between all features: 
-  * usecases - contains dart callable calls that represents the super class for all features.
+* **core** - contains the common classes used between all features: 
+  * usecases - contains dart callable calls that represents the super class for all use-cases.
   * network - contains the classes need to interact with the network and checking the connection status.
   * utils - contains utils for app core.
   * error - contains app exceptions and failure classes.
-* **di** - contains dependency injection modules for Injectable lib.
-* **features** - contains app features along with their domains and data. 
+* **di** - contains dependency injection modules for Injectable & GetIt.
+* **features** - contains app the features along with their domains, data and repositories contracts. 
 
 
 ### Features structure:
 Every feature should have the following packages:
 * **domain** - contains pure business logic, app usecases and repositories contracts.
   * entities - conatins app core entities.
-  * usecases - contracts and implementations of the feature use-cases.
+  * usecases - contracts and implementations of the feature's use-cases.
   * repos - contains the contracts of the domain repositories. 
 * **data** - classes responsible for handling the data: 
-  * datasources - contains contracts and implementations of the feature datasourses.
+  * datasources - contains the contracts and implementations of the feature datasourses.
   * models - contains the classes need to parse json data and convert it into entities.
-  * repos - the concrete implementation of the domain repositories which will act as a single source of truth for the feature. 
-* **representation** - contains the classes needed for displaying the data to the user.
+  * repos - the concrete implementations of the domain repositories which will act as a single source of truth for the feature. 
+* **representation** - contains the classes needed for UI and statemanagment.
   * bloc - feature state managment BloCs.
   * ui - Flutter widgets and UI elements.
 
+
+### Test structure:
+* **Unit and UI test** - located under `test` folder and follows the same lib folder structure.
+* **Integration tests** - located under `test_driver`..
 ### App Envs:
 * **Prod** - main.dart : the dependancy injection will be set to Prod mode and it will use real datasourse.
 * **Test** - main_mock.dart : the dependancy injection will be set to Test mode and it will use mocked datasources.
