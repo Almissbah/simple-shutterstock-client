@@ -10,7 +10,7 @@ abstract class ApiModule {
   Dio getDio() {
     var dio = Dio();
     
-    dio.options.headers['Authorization'] = jwtToken;
+    dio.options.headers['Authorization'] = 'Bearer '+jwtToken;
     dio.interceptors.add(PrettyDioLogger(
         requestHeader: true,
         requestBody: true,
