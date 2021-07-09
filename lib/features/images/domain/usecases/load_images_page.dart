@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 import 'package:shutterstock_client/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:shutterstock_client/core/usecases/usecase.dart';
@@ -6,6 +7,8 @@ import 'package:shutterstock_client/features/images/domain/entities/images_page.
 import 'package:shutterstock_client/features/images/domain/repos/images_repository.dart';
 
 /// This use case returns [ImagesPage] when success and [Failure] object when fail.
+
+@injectable
 class LoadImagesPage extends UseCase<ImagesPage, Params> {
   final ImagesRepository imagesRepository;
 

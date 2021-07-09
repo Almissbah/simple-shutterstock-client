@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 import 'package:shutterstock_client/core/network/network_info.dart';
 import 'package:shutterstock_client/features/images/data/datasources/images_remote_data_source.dart';
 import 'package:shutterstock_client/features/images/domain/entities/images_page.dart';
@@ -6,6 +7,8 @@ import 'package:shutterstock_client/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:shutterstock_client/features/images/domain/repos/images_repository.dart';
 
+
+@Singleton(as: ImagesRepository)
 class ImagesRepositoryImpl extends ImagesRepository {
   final ImagesRemoteDataSource imagesRemoteDataSource;
   final NetworkInfo networkInfo;
