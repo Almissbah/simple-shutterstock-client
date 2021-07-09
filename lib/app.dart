@@ -1,7 +1,6 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shutterstock_client/features/splash/ui/splash_screen.dart';
 
 import 'features/images/presentation/bloc/images_bloc.dart';
 import 'features/images/presentation/ui/images_screen.dart';
@@ -14,12 +13,16 @@ class MyApp extends StatelessWidget {
       title: 'ShutterAPI Client',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.red,
       ),
-      home: BlocProvider.value(
-        value: getIt<ImagesBloc>(),
-        child: ImagesScreen(),
-      ),
+      initialRoute: SplashScreen.routeName,
+      routes: {
+        SplashScreen.routeName: (context) => SplashScreen(),
+        ImagesScreen.routeName: (context) => BlocProvider<ImagesBloc>.value(
+              value: getIt<ImagesBloc>(),
+              child: ImagesScreen(),
+            ),
+      },
     );
   }
 }

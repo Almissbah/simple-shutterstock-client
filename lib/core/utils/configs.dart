@@ -1,0 +1,1 @@
+final int SPLASH_SCREEN_DELAY_IN_MS=2*1000;

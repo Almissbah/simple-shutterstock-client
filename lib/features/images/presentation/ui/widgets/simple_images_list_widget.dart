@@ -69,7 +69,7 @@ class _SimpleImageListWidgetState extends State<SimpleImageListWidget> {
             borderRadius: BorderRadius.all(Radius.circular(5)),
             boxShadow: [
               BoxShadow(
-                  color: Colors.black26,
+                  color: Colors.black12,
                   offset: Offset(0, 1),
                   blurRadius: 3,
                   spreadRadius: 1)
@@ -90,7 +90,7 @@ class _SimpleImageListWidgetState extends State<SimpleImageListWidget> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               child: Text(
-                item.description,
+                item.description,style: TextStyle(color: Colors.black,fontSize: 16),
                 key: Key(
                     SimpleImagesListKeys.LIST_ITEM_DESC_KEY_PRIFIX + '_$index'),
               ),

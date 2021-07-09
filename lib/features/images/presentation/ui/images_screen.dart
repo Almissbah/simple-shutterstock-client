@@ -4,6 +4,7 @@ import 'package:shutterstock_client/features/images/presentation/ui/keys/images_
 import 'package:shutterstock_client/features/images/presentation/ui/widgets/simple_images_list_widget.dart';
 
 class ImagesScreen extends StatelessWidget {
+  static String routeName = 'ImagesScreen';
   const ImagesScreen({Key key}) : super(key: key);
 
   @override
@@ -13,10 +14,23 @@ class ImagesScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 3,
         backgroundColor: Colors.white,
-        title: Text(
-          "Shutterstock Images",
+        title: Text.rich(
+          TextSpan(
+              text: 'Shutterstock ',
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
+              children: <InlineSpan>[
+                TextSpan(
+                  text: 'Client',
+                  style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red),
+                )
+              ]),
           key: Key(ImagesScreenKeys.TITLE_TEXT_KEY),
-          style: TextStyle(color: Colors.black),
         ),
       ),
       body: _buildBody(),
