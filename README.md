@@ -73,3 +73,5 @@ flutter run --profile
 ### Run App Tests
 #####  Run Widget and Unit Tests
 flutter test
+#####  Run Test Driver (Mocked Env) 
+flutter drive --target=test_driver/main.dart
