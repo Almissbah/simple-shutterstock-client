@@ -1,12 +1,12 @@
 # Shutterstock Client
-This a simple mobile application written with Flutter that uses shutterstock APIs to display a list of images with infinite scroll.
+This a simple mobile application written with Flutter that uses shutterstock APIs to search and display a list of images, the app supports pagination and infinite scroll.
  
 
 ## App Features 
  
-1.   List Images from server.
+1.   User can search for Images from server.
 2.   Pagination and infinite scrolling.
-2.   Error handling and retry functionality.
+3.   Error handling and retry functionality.
 
 ## App architecture
 The app is based on clean architecture, BloC and dependancy injection to provide good separation between the application layers and support testing each module individually.

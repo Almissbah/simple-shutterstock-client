@@ -1,6 +1,7 @@
 // Imports the Flutter Driver API.
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:shutterstock_client/features/images/presentation/ui/keys/images_screen_keys.dart';
+import 'package:shutterstock_client/features/images/presentation/ui/keys/search_app_keys.dart';
 import 'package:shutterstock_client/features/images/presentation/ui/keys/simple_images_list_keys.dart';
 import 'package:shutterstock_client/features/splash/presentation/ui/keys/splash_screen_keys.dart';
 import 'package:test/test.dart';
@@ -38,6 +39,21 @@ void main() {
         await myDriver.expectPresent(ImagesScreenKeys.TITLE_TEXT_KEY);
       });
 
+      test('test search app bar', () async {
+        await myDriver.delay(1);
+        await myDriver.waitFor(SearchAppBarKeys.APP_BAR_KEY);
+        await myDriver.expectPresent(ImagesScreenKeys.TITLE_TEXT_KEY);
+        await myDriver.tap(SearchAppBarKeys.SEARCH_BUTTON_KEY);
+        await myDriver.expectPresent(SearchAppBarKeys.SEARCH_FIELD_KEY);
+        await myDriver.tap(SearchAppBarKeys.SEARCH_FIELD_KEY);
+        await myDriver.setTextEntryEmulation(true);
+        await myDriver.enterText("Nature");
+        expect('Nature',
+            await myDriver.getText(SearchAppBarKeys.SEARCH_FIELD_KEY));
+        await myDriver.tap(SearchAppBarKeys.BACK_BUTTON_KEY);
+        await myDriver.expectPresent(SearchAppBarKeys.SEARCH_BUTTON_KEY);
+      });
+
       test('test pagination scrolling', () async {
         await myDriver.scrollToPosition(
             SimpleImagesListKeys.IMAGE_LIST_WIDGET_KEY,
@@ -45,8 +61,9 @@ void main() {
         await myDriver.delay(1);
         await myDriver.expectPresent(
             SimpleImagesListKeys.LIST_ITEM_IMAGE_KEY_PRIFIX + '_4');
-                   await myDriver.expectPresent(
+        await myDriver.expectPresent(
             SimpleImagesListKeys.LIST_ITEM_DESC_KEY_PRIFIX + '_4');
+        await myDriver.delay(1);
       });
     });
   } catch (e, s) {
