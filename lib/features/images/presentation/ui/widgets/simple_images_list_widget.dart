@@ -8,16 +8,19 @@ import 'package:shutterstock_client/features/images/presentation/bloc/images_blo
 import 'package:shutterstock_client/features/images/presentation/ui/keys/simple_images_list_keys.dart';
 
 class SimpleImageListWidget extends StatefulWidget {
-  SimpleImageListWidget({Key key}) : super(key: key);
+  SimpleImageListWidget({
+    Key key,
+  }) : super(key: key);
 
   @override
-  _SimpleImageListWidgetState createState() => _SimpleImageListWidgetState();
+  SimpleImageListWidgetState createState() => SimpleImageListWidgetState();
 }
 
-class _SimpleImageListWidgetState extends State<SimpleImageListWidget> {
+class SimpleImageListWidgetState extends State<SimpleImageListWidget> {
   static const _pageSize = 10;
   int currentPageNumber = 1;
   int currentPageKey = 1;
+  String searchQuery = '';
   ImagesBloc _imagesBloc;
   final PagingController<int, ImageData> _pagingController =
       PagingController(firstPageKey: 1);
@@ -90,7 +93,8 @@ class _SimpleImageListWidgetState extends State<SimpleImageListWidget> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               child: Text(
-                item.description,style: TextStyle(color: Colors.black,fontSize: 16),
+                item.description,
+                style: TextStyle(color: Colors.black, fontSize: 16),
                 key: Key(
                     SimpleImagesListKeys.LIST_ITEM_DESC_KEY_PRIFIX + '_$index'),
               ),
@@ -137,7 +141,7 @@ class _SimpleImageListWidgetState extends State<SimpleImageListWidget> {
     currentPageKey = pageKey;
     currentPageNumber = _getCurrentPageNumber(pageKey);
     _imagesBloc.loadImages(
-        query: "Nature",
+        query: searchQuery,
         pageNumber: currentPageNumber,
         imagesPerPage: _pageSize);
   }
@@ -146,6 +150,13 @@ class _SimpleImageListWidgetState extends State<SimpleImageListWidget> {
   void dispose() {
     _pagingController.dispose();
     super.dispose();
+  }
+
+  updateSearchQuery(String newSearch) {
+    setState(() {
+      searchQuery = newSearch;
+      _pagingController.refresh();
+    });
   }
 
   void _handleState(ImagesState state) {
