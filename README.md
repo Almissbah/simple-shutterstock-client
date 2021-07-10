@@ -2,6 +2,8 @@
 This a simple mobile application written with Flutter that uses shutterstock APIs to search and display a list of images, the app supports pagination and infinite scroll.
  
 
+ <img src="screenshots/splash.png" width="300">  <img src="screenshots/search.png" width="300">  <img src="screenshots/search.png" width="300"> 
+
 ## App Features 
  
 1.   User can search for Images from server.
