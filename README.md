@@ -5,8 +5,8 @@ This a simple mobile application written with Flutter that uses shutterstock API
 ## App Features 
  
 1.   User can search for Images from server.
-2.   Pagination and infinite scrolling.
-3.   Error handling and retry functionality.
+2.   Images will be displayed with pagination and infinite scrolling.
+3.   Support for error handling and retry functionality.
 
 ## App architecture
 The app is based on clean architecture, BloC and dependancy injection to provide good separation between the application layers and support testing each module individually.
